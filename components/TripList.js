@@ -3,6 +3,7 @@ import React from "react";
 import FavoriteButton from "./FavoriteButton";
 import { width } from "../constants/theme";
 import { useNavigation } from "@react-navigation/native";
+import { SharedElement } from "react-navigation-shared-element";
 const CARD_WIDTH = width / 2 - (24 + 24 / 2);
 const CARD_HEIGHT = 220;
 
@@ -23,19 +24,21 @@ const TripList = ({ list }) => {
               className="bg-white rounded-2xl shadow-sm shadow-gray-300"
               style={{ height: CARD_HEIGHT, width: CARD_WIDTH }}
             >
-              <View
-                className="rounded-tl-2xl rounded-tr-2xl overflow-hidden"
-                style={{ width: CARD_WIDTH, height: CARD_HEIGHT - 60 }}
-              >
-                <Image
-                  source={item.image}
-                  style={{
-                    width: CARD_WIDTH,
-                    height: CARD_HEIGHT - 60,
-                    resizeMode: "cover",
-                  }}
-                />
-              </View>
+              <SharedElement id={`trip.${item.id}.image`}>
+                <View
+                  className="rounded-tl-2xl rounded-tr-2xl overflow-hidden"
+                  style={{ width: CARD_WIDTH, height: CARD_HEIGHT - 60 }}
+                >
+                  <Image
+                    source={item.image}
+                    style={{
+                      width: CARD_WIDTH,
+                      height: CARD_HEIGHT - 60,
+                      resizeMode: "cover",
+                    }}
+                  />
+                </View>
+              </SharedElement>
               <View className="flex-row items-center mt-[6px] mx-4">
                 <View>
                   <Text className="my-1 text-[14px] line-he font-bold text-gray-900 ">

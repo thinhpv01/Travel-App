@@ -1,6 +1,7 @@
 import { View, Text, Animated, StyleSheet } from "react-native";
 import React, { useRef } from "react";
 import HomeScreen from "../screens/HomeScreen";
+import HomeNavigator from "./HomeNavigator";
 import SearchScreen from "../screens/SearchScreen";
 import FavoriteScreen from "../screens/FavoriteScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -11,7 +12,7 @@ const Tab = createBottomTabNavigator();
 const tabs = [
   {
     name: "Home",
-    screen: HomeScreen,
+    screen: HomeNavigator,
   },
   {
     name: "Search",

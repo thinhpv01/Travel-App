@@ -1,8 +1,16 @@
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+} from "react-native";
 import React from "react";
 import { width } from "../constants/theme";
 import FavoriteButton from "./FavoriteButton";
 import { useNavigation } from "@react-navigation/native";
+import { SharedElement } from "react-navigation-shared-element";
 const CARD_WIDTH = width - 80;
 const CARD_HEIGHT = 200;
 const CARD_WIDTH_SPACING = CARD_WIDTH + 24;
@@ -26,23 +34,28 @@ const TopPlacesCarousel = ({ list }) => {
             onPress={() => navigation.navigate("TripDetails", { trip: item })}
           >
             <View
-              className="my-3 shadow-sm shadow-gray-400"
+              className="my-3 shadow-sm shadow-gray-400 bg-white rounded-2xl"
               style={{
                 width: CARD_WIDTH,
                 height: CARD_HEIGHT,
               }}
             >
               <FavoriteButton />
-              <View
-                className="rounded-2xl overflow-hidden"
-                style={{ width: CARD_WIDTH, height: CARD_HEIGHT }}
+              <SharedElement
+                id={`trip.${item.id}.image`}
+                style={StyleSheet.absoluteFillObject}
               >
-                <Image
-                  source={item.image}
-                  className="object-cover"
+                <View
+                  className="rounded-2xl overflow-hidden"
                   style={{ width: CARD_WIDTH, height: CARD_HEIGHT }}
-                />
-              </View>
+                >
+                  <Image
+                    source={item.image}
+                    className="object-cover"
+                    style={{ width: CARD_WIDTH, height: CARD_HEIGHT }}
+                  />
+                </View>
+              </SharedElement>
               <View
                 className="absolute left-4"
                 style={{ top: CARD_HEIGHT - 80 }}
