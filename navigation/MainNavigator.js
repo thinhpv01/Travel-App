@@ -14,13 +14,14 @@ const MainNavigator = () => {
         <Stack.Screen
           name="Root"
           component={TabNavigator}
-          options={{ useNativeDriver: true }}
+          options={{ useNativeDriver: true, gestureEnabled: false }}
         />
         <Stack.Screen
           name="TripDetails"
           component={TripDetailScreen}
           options={{
             useNativeDriver: true,
+            gestureEnabled: false,
             cardStyleInterpolator: ({ current: { progress } }) => ({
               cardStyle: { opacity: progress },
             }),

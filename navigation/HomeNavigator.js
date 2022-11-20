@@ -10,7 +10,11 @@ const HomeNavigator = () => {
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerShown: false, useNativeDriver: true }}
+        options={{
+          headerShown: false,
+          useNativeDriver: true,
+          gestureEnabled: false,
+        }}
       />
     </Stack.Navigator>
   );

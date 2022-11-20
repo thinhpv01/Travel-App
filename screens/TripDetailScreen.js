@@ -6,9 +6,11 @@ import Icon from "../components/Icon";
 import { SharedElement } from "react-navigation-shared-element";
 import * as Animatable from "react-native-animatable";
 import TripDetailCard from "../components/TripDetailCard";
+import TripDetailsCarousel from "../components/TripDetailsCarousel";
 
 const TripDetailScreen = ({ navigation, route }) => {
   const { trip } = route.params;
+  const slides = [trip.image, ...trip.gallery];
   return (
     <View className="flex-1">
       <Animatable.View
@@ -24,7 +26,8 @@ const TripDetailScreen = ({ navigation, route }) => {
           onPress={() => navigation.goBack()}
         />
       </Animatable.View>
-      <SharedElement
+      <TripDetailsCarousel slides={slides} id={trip.id} />
+      {/* <SharedElement
         id={`trip.${trip.id}.image`}
         style={StyleSheet.absoluteFillObject}
       >
@@ -35,7 +38,7 @@ const TripDetailScreen = ({ navigation, route }) => {
             style={{ width: width, height: height, resizeMode: "cover" }}
           />
         </View>
-      </SharedElement>
+      </SharedElement> */}
       <TripDetailCard trip={trip} />
     </View>
   );
