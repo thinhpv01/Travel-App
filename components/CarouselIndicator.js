@@ -1,5 +1,5 @@
-import { View, Text, Animated } from "react-native";
 import React, { useMemo, useRef } from "react";
+import { Animated, View } from "react-native";
 
 const CarouselIndicator = ({
   slidesCount,

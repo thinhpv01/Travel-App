@@ -1,10 +1,7 @@
-import { View, Text, Image, StyleSheet } from "react-native";
 import React from "react";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { height, width } from "../constants/theme";
-import Icon from "../components/Icon";
-import { SharedElement } from "react-navigation-shared-element";
+import { View } from "react-native";
 import * as Animatable from "react-native-animatable";
+import Icon from "../components/Icon";
 import TripDetailCard from "../components/TripDetailCard";
 import TripDetailsCarousel from "../components/TripDetailsCarousel";
 

@@ -1,7 +1,8 @@
-import { View, Text, FlatList, Image, Animated } from "react-native";
 import React, { useRef } from "react";
-import { height, width } from "../constants/theme";
+import { Animated, Image, View } from "react-native";
+import * as Animatable from "react-native-animatable";
 import { SharedElement } from "react-navigation-shared-element";
+import { height, width } from "../constants/theme";
 import CarouselIndicator from "./CarouselIndicator";
 
 const TripDetailsCarousel = ({ slides, id }) => {
@@ -49,18 +50,24 @@ const TripDetailsCarousel = ({ slides, id }) => {
           );
         }}
       />
-      <View
-        className="absolute bottom-[60px] items-center"
-        style={{ width: width }}
-      >
-        <CarouselIndicator
-          slidesCount={slides.length}
-          slideWidth={width}
-          dotSize={12}
-          dotSpacing={8}
-          scrollAnimated={scrollAnimated}
-        />
-      </View>
+      {slides.length > 1 && (
+        <Animatable.View
+          className="absolute bottom-[60px] items-center"
+          style={{ width: width }}
+          animation="fadeInUp"
+          delay={550}
+          duration={550}
+          easing="ease-in-out"
+        >
+          <CarouselIndicator
+            slidesCount={slides.length}
+            slideWidth={width}
+            dotSize={12}
+            dotSpacing={8}
+            scrollAnimated={scrollAnimated}
+          />
+        </Animatable.View>
+      )}
     </>
   );
 };

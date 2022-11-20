@@ -1,5 +1,5 @@
-import { View, Text, Button, Pressable } from "react-native";
 import React from "react";
+import { Pressable, Text, View } from "react-native";
 
 const SectionHeader = ({ title, onPress, buttonTitle }) => {
   return (
